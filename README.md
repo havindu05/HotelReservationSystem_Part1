@@ -1,30 +1,56 @@
 🏨 Hotel Management System
-A modern Hotel Management System built with Java + JavaFX, designed to streamline hotel operations such as managing customers, rooms, and hotel information with a clean UI and OOP architecture.
 
+A Java + JavaFX based Hotel Management System to manage customer details, room details, and hotel information through an interactive dashboard. The system is designed with OOP principles, DTOs, and MVC architecture for scalability and maintainability.
 
 ✨ Features
-✔️ Manage Customer Details (Add, Update, Delete, Search)
-✔️ Manage Room Information (Types, Facilities, Pricing)
-✔️ Maintain Hotel Information
-✔️ DTO-based architecture for scalability
-✔️ Clean & simple JavaFX User Interface
-🚀 Tech Stack
-Language: Java 17+
-Framework/UI: JavaFX (FXML + Scene Builder)
-Architecture: OOP + DTO + MVC structure
-IDE: IntelliJ IDEA / Eclipse
+
+🧑‍💼 Customer Management – Add, Update, Search, Delete customers
+
+🏨 Room Management – Manage room types, facilities, and pricing
+
+🏢 Hotel Information – View & manage hotel details
+
+🎨 JavaFX UI – Clean and user-friendly interface
+
+📦 DTO-based design – Ensures better structure and maintainability
+
+🚀 Technologies Used
+
+.Java 17+
+
+.JavaFX (FXML + Scene Builder)
+
+.OOP + DTO + MVC Architecture
+
+.IntelliJ IDEA / Scene Builder
+
 📂 Project Structure
+
 HotelManagementSystem/
+
  ┣ Controller/
+ 
  ┃ ┣ DashBoardController.java
+ 
  ┃ ┣ CustomerInfoController.java
+
  ┃ ┗ RoomInfoController.java
+ 
  ┣ DTO/
+ 
  ┃ ┣ CustomerInfoDTO.java
+ 
  ┃ ┗ RoomInfoDTO.java
+ 
  ┣ View/
+ 
  ┃ ┣ DashBoard.fxml
+ 
  ┃ ┣ CustomerInfo.fxml
+ 
  ┃ ┗ RoomInfo.fxml
+ 
  ┣ Main.java
+ 
  ┗ README.md
+ 
