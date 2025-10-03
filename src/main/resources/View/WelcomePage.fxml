@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomePageController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Imagine%20a%20modern%20tropical%20oasis%20where%20sleek….jpg" />
+         </image>
+      </ImageView>
+      <Circle fill="WHITE" layoutX="300.0" layoutY="211.0" radius="162.0" stroke="WHITE" strokeType="INSIDE" />
+      <Text layoutX="284.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!!!" textAlignment="CENTER" wrappingWidth="293.3798828125">
+         <font>
+            <Font name="Didot" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="#8a8a22" layoutX="316.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“Welcome to Hotel GrandBell – your home by the sea.Relax, unwind, and let us take care of the rest.”" textAlignment="CENTER" wrappingWidth="229.16357421875">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="190.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-opacity: 60%;" text="Our Mission">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#256f9a" layoutX="190.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“To provide exceptional hospitality by delivering world-class service, luxurious comfort, and unforgettable experiences that exceed our guests’ expectations while upholding the highest standards of quality, care, and sustainability.”" wrappingWidth="393.0" />
+      <Text layoutX="486.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-opacity: 60%;" text="Our Vission">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#256f9a" layoutX="229.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“To be recognized as the leading five-star hotel brand globally, known for redefining luxury, creating timeless memories, and setting the benchmark in hospitality excellence.”" wrappingWidth="354.0" />
+      <Button layoutX="300.0" layoutY="347.0" mnemonicParsing="false" onAction="#btnNext" prefHeight="26.0" prefWidth="277.0" style="-fx-background-color: #FCB53B;" text="Next" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

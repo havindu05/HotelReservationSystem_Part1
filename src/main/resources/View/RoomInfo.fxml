@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RoomInfoController">
+   <children>
+      <ImageView fitHeight="401.0" fitWidth="487.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Tropical%20Architecture_%20Navigating%20the%20Art%20of….jpg" />
+         </image>
+      </ImageView>
+      <Polygon fill="WHITE" layoutX="338.0" layoutY="61.0" points="62.0, 339.0, -97.21708679199219, 42.37196350097656, 63.0, -61.0" stroke="WHITE" strokeType="INSIDE" />
+      <Text layoutX="429.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Info">
+         <font>
+            <Font name="Beirut Regular" size="28.0" />
+         </font>
+      </Text>
+      <Text fill="#2061d6" layoutX="300.0" layoutY="86.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🛋 Features &amp; Amenities" textAlignment="CENTER" wrappingWidth="173.23068237304688">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="330.0" layoutY="103.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* King-size bed with premium linens" textAlignment="CENTER" wrappingWidth="234.4136962890625">
+         <font>
+            <Font name="Arial Italic" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="333.0" layoutY="119.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Private balcony with outdoor seating" textAlignment="CENTER" wrappingWidth="245.71258345618844">
+         <font>
+            <Font name="Arial Italic" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#2061d6" layoutX="270.0" layoutY="146.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🛁 Bathroom Luxury" textAlignment="CENTER" wrappingWidth="173.23068237304688">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="326.0" layoutY="163.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Marble bathroom with double vanity" textAlignment="CENTER" wrappingWidth="244.9777252659203">
+         <font>
+            <Font name="Arial Italic" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="325.0" layoutY="179.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Jacuzzi bathtub with ocean view" textAlignment="CENTER" wrappingWidth="207.33270263671875">
+         <font>
+            <Font name="Arial Italic" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#2061d6" layoutX="301.0" layoutY="214.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🍽 Services Included" textAlignment="CENTER" wrappingWidth="173.23068237304688">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="335.0" layoutY="229.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Daily buffet breakfast (international cuisine)" textAlignment="CENTER" wrappingWidth="258.48565673828125">
+         <font>
+            <Font name="Arial Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="329.0" layoutY="244.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*24/7 butler &amp; room service" textAlignment="CENTER" wrappingWidth="199.71259935759008">
+         <font>
+            <Font name="Arial Italic" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#2061d6" layoutX="342.0" layoutY="278.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🎉 Extra Experiences" textAlignment="CENTER" wrappingWidth="173.23068237304688">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="374.0" layoutY="302.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Free access to infinity pool &amp; spa" textAlignment="CENTER" wrappingWidth="200.31167602539062">
+         <font>
+            <Font name="Arial Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="378.0" layoutY="317.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Private beach cabanas" textAlignment="CENTER" wrappingWidth="172.71259744651616">
+         <font>
+            <Font name="Arial Italic" size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="416.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnNext" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #FAA533;" text="Next" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
