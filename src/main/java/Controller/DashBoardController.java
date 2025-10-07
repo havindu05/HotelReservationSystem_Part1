@@ -23,7 +23,12 @@ public class DashBoardController {
 
     @FXML
     void btnHotelInfo(ActionEvent event) {
-
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/EmployInfo.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
 
     @FXML
