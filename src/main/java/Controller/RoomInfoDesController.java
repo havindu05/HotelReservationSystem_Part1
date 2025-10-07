@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 
 public class RoomInfoDesController implements Initializable {
 
-    // Sample data
     ObservableList<RoomInfoDTO> roomInfoDTOS = FXCollections.observableArrayList(
             new RoomInfoDTO("L001", "Presidential Suite", "King-size Bed, Private Balcony, Jacuzzi, Ocean View", 750000),
             new RoomInfoDTO("L002", "Royal Suite", "King Bed, Panoramic City View, Private Butler Service, Lounge Access", 650000),
@@ -60,16 +59,13 @@ public class RoomInfoDesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Set up Table Columns
         colRoomID.setCellValueFactory(new PropertyValueFactory<>("roomId"));
         colType.setCellValueFactory(new PropertyValueFactory<>("type"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        // Load Data
         tblRoomInfo.setItems(roomInfoDTOS);
 
-        // Selection Listener
         tblRoomInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 txtRoomId.setText(newValue.getRoomId());
@@ -79,8 +75,6 @@ public class RoomInfoDesController implements Initializable {
             }
         });
     }
-
-    // ================= BUTTON ACTIONS =================
 
     @FXML
     void btnAdd(ActionEvent event) {
@@ -120,7 +114,6 @@ public class RoomInfoDesController implements Initializable {
         }
     }
 
-    // Clear all text fields
     private void clearFields() {
         txtRoomId.clear();
         txtType.clear();
