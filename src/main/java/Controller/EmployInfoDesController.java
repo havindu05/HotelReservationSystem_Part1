@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -16,6 +15,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EmployInfoDesController implements Initializable {
+
+    private final ObservableList<EmployInfoDTO> employInfoDTOS = FXCollections.observableArrayList(
+            new EmployInfoDTO("John Silva", "32", "EMP001", "0771234567", "No.12, Galle Road, Colombo", 85000.00),
+            new EmployInfoDTO("Alice Fernando", "28", "EMP002", "0719876543", "No.8, Temple Lane, Kandy", 78000.00),
+            new EmployInfoDTO("Nimal Perera", "45", "EMP003", "0751122334", "No.20, Main Street, Negombo", 92000.00),
+            new EmployInfoDTO("Sunethra Jayawardena", "38", "EMP004", "0769988776", "No.45, Lake View, Nuwara Eliya", 110000.00),
+            new EmployInfoDTO("Ruwan Karunaratne", "40", "EMP005", "0723344556", "No.17, Beach Road, Galle", 95000.00),
+            new EmployInfoDTO("Kamal Weerasinghe", "29", "EMP006", "0775566778", "No.3, Temple Road, Kurunegala", 72000.00),
+            new EmployInfoDTO("Tharushi Wickrama", "26", "EMP007", "0704455667", "No.22, Hill Street, Matara", 68000.00),
+            new EmployInfoDTO("Dilan Abeysekara", "35", "EMP008", "0781122443", "No.14, Park Avenue, Colombo", 105000.00),
+            new EmployInfoDTO("Malithi Ranasinghe", "31", "EMP009", "0719988776", "No.9, Station Road, Gampaha", 89000.00),
+            new EmployInfoDTO("Chathura Jayasena", "27", "EMP010", "0763344559", "No.27, River Side, Anuradhapura", 75000.00)
+    );
 
     @FXML
     private TableColumn<EmployInfoDTO, String> colAddress;
@@ -56,56 +68,18 @@ public class EmployInfoDesController implements Initializable {
     @FXML
     private TextField txtSalary;
 
-    private final ObservableList<EmployInfoDTO> employList = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
-        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
-
-        employList.addAll(
-                new EmployInfoDTO("John Silva", "32", "EMP001", "0771234567", "No.12, Galle Road, Colombo", 85000.00),
-                new EmployInfoDTO("Alice Fernando", "28", "EMP002", "0719876543", "No.8, Temple Lane, Kandy", 78000.00),
-                new EmployInfoDTO("Nimal Perera", "45", "EMP003", "0751122334", "No.20, Main Street, Negombo", 92000.00),
-                new EmployInfoDTO("Sunethra Jayawardena", "38", "EMP004", "0769988776", "No.45, Lake View, Nuwara Eliya", 110000.00),
-                new EmployInfoDTO("Ruwan Karunaratne", "40", "EMP005", "0723344556", "No.17, Beach Road, Galle", 95000.00),
-                new EmployInfoDTO("Kamal Weerasinghe", "29", "EMP006", "0775566778", "No.3, Temple Road, Kurunegala", 72000.00),
-                new EmployInfoDTO("Tharushi Wickrama", "26", "EMP007", "0704455667", "No.22, Hill Street, Matara", 68000.00),
-                new EmployInfoDTO("Dilan Abeysekara", "35", "EMP008", "0781122443", "No.14, Park Avenue, Colombo", 105000.00),
-                new EmployInfoDTO("Malithi Ranasinghe", "31", "EMP009", "0719988776", "No.9, Station Road, Gampaha", 89000.00),
-                new EmployInfoDTO("Chathura Jayasena", "27", "EMP010", "0763344559", "No.27, River Side, Anuradhapura", 75000.00)
-
-        );
-
-        tblEmployInfo.setItems(employList);
-    }
-
     @FXML
     void btnAdd(ActionEvent event) {
-        try {
-            String name = txtName.getText();
-            String age = txtAge.getText();
-            String id = textID.getText();
-            String phone = txtPhoneNumber.getText();
-            String address = txtAddress.getText();
-            double salary = Double.parseDouble(txtSalary.getText());
+        String name = txtName.getText();
+        String age = txtAge.getText();
+        String id = textID.getText();
+        String phone = txtPhoneNumber.getText();
+        String address = txtAddress.getText();
+        double salary = Double.parseDouble(txtSalary.getText());
 
-            EmployInfoDTO newEmp = new EmployInfoDTO(name, age, id, phone, address, salary);
-            employList.add(newEmp);
-            tblEmployInfo.refresh();
-
-            clearFields();
-        } catch (Exception e){
-
-        }
-    }
-
-    @FXML
-    void btnClear(ActionEvent event) {
+        EmployInfoDTO employ = new EmployInfoDTO(name, age, id, phone, address, salary);
+        employInfoDTOS.add(employ);
+        tblEmployInfo.refresh();
         clearFields();
     }
 
@@ -113,10 +87,7 @@ public class EmployInfoDesController implements Initializable {
     void btnDelete(ActionEvent event) {
         EmployInfoDTO selected = tblEmployInfo.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            employList.remove(selected);
-            showAlert("Deleted", "Employee record removed.");
-        } else {
-            showAlert("Error", "Please select an employee to delete.");
+            employInfoDTOS.remove(selected);
         }
     }
 
@@ -124,22 +95,19 @@ public class EmployInfoDesController implements Initializable {
     void btnUpdate(ActionEvent event) {
         EmployInfoDTO selected = tblEmployInfo.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            selected = new EmployInfoDTO(
-                    txtName.getText(),
-                    txtAge.getText(),
-                    textID.getText(),
-                    txtPhoneNumber.getText(),
-                    txtAddress.getText(),
-                    Double.parseDouble(txtSalary.getText())
-            );
-            int index = tblEmployInfo.getSelectionModel().getSelectedIndex();
-            employList.set(index, selected);
+            selected.setName(txtName.getText());
+            selected.setAge(txtAge.getText());
+            selected.setId(textID.getText());
+            selected.setPhoneNo(txtPhoneNumber.getText());
+            selected.setAddress(txtAddress.getText());
+            selected.setSalary(Double.parseDouble(txtSalary.getText()));
             tblEmployInfo.refresh();
-            showAlert("Updated", "Employee info updated successfully!");
-            clearFields();
-        } else {
-            showAlert("Error", "Please select an employee to update.");
         }
+    }
+
+    @FXML
+    void btnClear(ActionEvent event) {
+        clearFields();
     }
 
     private void clearFields() {
@@ -151,11 +119,26 @@ public class EmployInfoDesController implements Initializable {
         txtSalary.clear();
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+
+        tblEmployInfo.setItems(employInfoDTOS);
+
+        tblEmployInfo.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                txtName.setText(newVal.getName());
+                txtAge.setText(newVal.getAge());
+                textID.setText(newVal.getId());
+                txtPhoneNumber.setText(newVal.getPhoneNo());
+                txtAddress.setText(newVal.getAddress());
+                txtSalary.setText(String.valueOf(newVal.getSalary()));
+            }
+        });
     }
 }
