@@ -4,13 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Dto.RoomInfoDTO;
 
-public class RoomInfoDesController {
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class RoomInfoDesController implements Initializable {
+
+    // Sample data
     ObservableList<RoomInfoDTO> roomInfoDTOS = FXCollections.observableArrayList(
             new RoomInfoDTO("L001", "Presidential Suite", "King-size Bed, Private Balcony, Jacuzzi, Ocean View", 750000),
             new RoomInfoDTO("L002", "Royal Suite", "King Bed, Panoramic City View, Private Butler Service, Lounge Access", 650000),
@@ -22,32 +28,103 @@ public class RoomInfoDesController {
             new RoomInfoDTO("L008", "Executive Suite", "King Bed, Work Desk, Lounge Access, Complimentary Breakfast", 450000),
             new RoomInfoDTO("L009", "Family Suite", "Two Double Beds, Living Area, Balcony, Free Wifi", 550000),
             new RoomInfoDTO("L010", "Deluxe Room", "Queen Bed, Ocean View, Mini-Bar, Smart TV", 400000)
-     );
+    );
 
     @FXML
-    private TableColumn<?, ?> colDescription;
+    private TableColumn<RoomInfoDTO, String> colDescription;
 
     @FXML
-    private TableColumn<?, ?> colPrice;
+    private TableColumn<RoomInfoDTO, Double> colPrice;
 
     @FXML
-    private TableColumn<?, ?> colRoomID;
+    private TableColumn<RoomInfoDTO, String> colRoomID;
 
     @FXML
-    private TableColumn<?, ?> colType;
+    private TableColumn<RoomInfoDTO, String> colType;
 
     @FXML
     private TableView<RoomInfoDTO> tblRoomInfo;
 
     @FXML
-    void btnReload(ActionEvent event) {
+    private TextField txtDescription;
 
+    @FXML
+    private TextField txtPrice;
+
+    @FXML
+    private TextField txtRoomId;
+
+    @FXML
+    private TextField txtType;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Set up Table Columns
         colRoomID.setCellValueFactory(new PropertyValueFactory<>("roomId"));
         colType.setCellValueFactory(new PropertyValueFactory<>("type"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+        // Load Data
         tblRoomInfo.setItems(roomInfoDTOS);
+
+        // Selection Listener
+        tblRoomInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                txtRoomId.setText(newValue.getRoomId());
+                txtType.setText(newValue.getType());
+                txtDescription.setText(newValue.getDescription());
+                txtPrice.setText(String.valueOf(newValue.getPrice()));
+            }
+        });
     }
 
+    // ================= BUTTON ACTIONS =================
+
+    @FXML
+    void btnAdd(ActionEvent event) {
+        RoomInfoDTO newRoom = new RoomInfoDTO(
+                txtRoomId.getText(),
+                txtType.getText(),
+                txtDescription.getText(),
+                Double.parseDouble(txtPrice.getText())
+        );
+        roomInfoDTOS.add(newRoom);
+        clearFields();
+    }
+
+    @FXML
+    void btnClear(ActionEvent event) {
+        clearFields();
+    }
+
+    @FXML
+    void btnDelete(ActionEvent event) {
+        RoomInfoDTO selected = tblRoomInfo.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            roomInfoDTOS.remove(selected);
+            clearFields();
+        }
+    }
+
+    @FXML
+    void btnUpdate(ActionEvent event) {
+        RoomInfoDTO selected = tblRoomInfo.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            selected.setRoomId(txtRoomId.getText());
+            selected.setType(txtType.getText());
+            selected.setDescription(txtDescription.getText());
+            selected.setPrice(Double.parseDouble(txtPrice.getText()));
+            tblRoomInfo.refresh();
+        }
+    }
+
+    // Clear all text fields
+    private void clearFields() {
+        txtRoomId.clear();
+        txtType.clear();
+        txtDescription.clear();
+        txtPrice.clear();
+    }
 }
